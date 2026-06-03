@@ -4,16 +4,21 @@
 "outline.json":
   cmd: cp basic.json outline.json
   dependencies:
-    - basic.json
-    - deps/a
-    - deps/b
+    - target: basic.json
+      in_fac.yaml: False
+    - target: deps/a
+      in_fac.yaml: False
+    - target: deps/b
+      in_fac.yaml: False
 
 "resources/$RESOURCE/about.json":
   cmd: cp basic.json resources/$RESOURCE/about.json
   dependencies:
-    - basic.json
+    - target: basic.json
+      in_fac.yaml: False
     - outline.json
-    - resources/$RESOURCE/description.md
+    - target: resources/$RESOURCE/description.md
+      in_fac.yaml: False
   variables:
     RESOURCE:
       ls resources
